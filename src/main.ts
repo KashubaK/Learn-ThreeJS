@@ -27,7 +27,7 @@ const fontLoader = new FontLoader(loadingManager);
 const loader = new THREE.TextureLoader(loadingManager);
 const cubeLoader = new THREE.CubeTextureLoader(loadingManager);
 
-const ASPECT_RATIO = window.innerWidth / window.innerHeight;
+// const ASPECT_RATIO = window.innerWidth / window.innerHeight;
 
 const textGroup = new THREE.Group();
 
@@ -41,7 +41,7 @@ async function main() {
   const scene = createScene();
 
   const camera = createCamera()
-  const controls = useMouseCameraControls(camera);
+  useMouseCameraControls(camera);
   const lights = createLights();
   createText(scene);
 
@@ -68,7 +68,7 @@ async function main() {
   }
 }
 
-function makeAtom(environmentMap) {
+function makeAtom(environmentMap: THREE.Texture) {
   const alpha = loader.load('/textures/Helium Logo Alpha.png');
   const geometry = new THREE.PlaneGeometry(1.25, 1.25)
 
@@ -159,7 +159,7 @@ async function createText(scene: Scene) {
 
 function createScene() {
   const scene = new THREE.Scene();
-  const axesHelper = new THREE.AxesHelper(3);
+  // const axesHelper = new THREE.AxesHelper(3);
 
   // scene.add(axesHelper);
 
@@ -174,7 +174,7 @@ function createLights() {
   pointLight.position.y = 0;
   pointLight.position.z = 5;
 
-  const lightHelper = new THREE.SpotLightHelper( pointLight );
+  // const lightHelper = new THREE.SpotLightHelper( pointLight );
 
   return [ambientLight, pointLight];
 }
@@ -227,9 +227,4 @@ function useMouseCameraControls(camera: THREE.Camera) {
   controls.enableDamping = true;
 
   return controls;
-}
-function createTexture(url: string) {
-  return loader.load(
-    url
-  );
 }
