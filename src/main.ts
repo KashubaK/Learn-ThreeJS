@@ -59,7 +59,7 @@ async function main() {
     const now = performance.now();
     const fps = 1000 / (now - lastFrameDrawnAt);
 
-    textGroup.rotation.y += baseSpeed(fps, 0.3);
+    textGroup.rotation.y -= baseSpeed(fps, 0.3);
 
     renderer.render(scene, camera);
 
